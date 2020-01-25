@@ -1,11 +1,11 @@
+language: generic
+sudo: required
 language: node_js
 node_js:
-  - 0.12
-sudo: required
+  - "8"
 services:
   - docker
 before_install:
-  - gem install bundler
   - docker build -t rafikdock/docker-react -f Dockerfile.dev .
 script:
   - docker run -e CI=true rafikdock/docker-react npm run test -- --coverage
