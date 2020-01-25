@@ -1,7 +1,8 @@
 sudo: required
+language: generic
 services:
   - docker
 before_install:
   - docker build -t rafikdock/docker-react -f Dockerfile.dev .
 script:
-  - docker run rafikdock/docker-react npm run test -- --coverage
+  - docker run -e CI=true rafikdock/docker-react npm run test -- --coverage
